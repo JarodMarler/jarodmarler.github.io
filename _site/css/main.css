@@ -26,8 +26,8 @@ body {
 blockquote, q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote: before, blockquote: after,
+q: before, q: after {
   content: '';
   content: none;
 }
@@ -52,7 +52,15 @@ html {
   padding: 0 30px;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: helvetica, arial, sans;
+}
+.content-container {
+  flex: 1 1 auto;
+  padding-top: 10vh;
+  width: 100%;
 }
 h1 {
   font-size: 7vw;
@@ -129,7 +137,7 @@ h2 ~ p {
 .header-nav > li:first-child a {
   color: #ed6e2f;
 }
-.header-nav > li:first-child a:hover {
+.header-nav > li:first-child a: hover {
   color: #fff;
 }
 
@@ -159,16 +167,51 @@ h2 ~ p {
 }
 
 /* HERO STYLES */
-  .full-hero {
+.full-hero {
   background-color: #c7dbfc;
   background-size: cover;
   box-sizing: border-box;
-  height: 100vh;
+  height: 90vh;
   padding-top: 10vh;
 }
 
-  .hero-home {
+.full-hero: after {
+  border: 10px solid;
+  border-color: #000 red purple blue;
+  bottom: 2vh;
+  content: "";
+  height: 0;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 0;
+}
+
+.hero-home {
   background-image: url(/images/shark.jpg);
+  background-position: center top;
+}
+
+.hero-content {
+  color: #fff;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.hero-content h1 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 7vw;
+  margin-bottom: 0.25em;
+}
+.hero-content .social-link {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #557c83;
+}
+.hero-content .social-link: hover {
+  background-color: #000;
+  color: #fff;
 }
 
 /* SOCIAL STYLES */
@@ -210,17 +253,26 @@ h2 ~ p {
   text-align: center;
 }
 .home-callout {
+  display: flex;
+  align-items: center;
   background-color: #000;
   color: #fff;
   padding: 7vh 0;
 }
+.home-callout h3 {
+  color: inherit;
+  margin-top: 1em;
+}
 .callout-title {
+  flex: 1;
   font-size: 5.75vw;
   text-align: right;
   text-transform: uppercase;
 }
 .callout-copy {
+  flex: 0 0 45em;
   font-size: 0.8rem;
+  padding: 0 3vw;
 }
 
 /* BIO STYLES */
@@ -250,11 +302,11 @@ h2 ~ p {
 }
 .bio-box .social-link {
   display: block;
-  margin: 2em 0 1em;
+  margin: 2em auto 1em;
 }
 .bio-copy {
-  font-size: 1em;
+  font-size: 0.75em;
 }
 .bio-copy a {
-  font-size: 0.75em;
+  color: green;
 }
